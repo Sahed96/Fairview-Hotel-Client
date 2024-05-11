@@ -36,12 +36,24 @@ const Rooms = () => {
                 <div className=" bg-base-100 shadow-xl">
                   <figure className="relative">
                     <img src={img} alt="img" />
-                    <p className="absolute top-3 left-3 px-2 py-1 bg-[#3a3768] text-white">
-                      {status}
-                    </p>
-                    <p className="absolute top-3 right-3 px-2 py-1 bg-[#e85f4c] text-white">
-                      {offer || ""}
-                    </p>
+                    {status ? (
+                      <p className="absolute top-3 left-3 px-2 py-1 bg-[#3a3768] text-white">
+                        {status}
+                      </p>
+                    ) : (
+                      <p className="absolute top-3 left-3 px-2 py-1 text-white">
+                        {status}
+                      </p>
+                    )}
+                    {offer ? (
+                      <p className="absolute top-3 right-3 px-2 py-1 bg-[#e85f4c] text-white">
+                        {offer}
+                      </p>
+                    ) : (
+                      <p className="absolute top-3 right-3 px-2 py-1 text-white">
+                        {offer}
+                      </p>
+                    )}
                   </figure>
                   <div className="card-body">
                     <h2 className="card-title text-[26px] marcellus ">

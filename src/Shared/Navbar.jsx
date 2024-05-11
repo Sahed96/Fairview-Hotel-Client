@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import logo from "../../public/nav.png";
+import useAuth from "../AuthProvider/useAuth";
 
 const Navbar = () => {
+  const { logout, user } = useAuth();
   const navList = (
     <>
       <li>
@@ -50,7 +52,41 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navList}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn btn-accent">Login</a>
+        {user ? (
+          <div className=" dropdown dropdown-bottom dropdown-end dropdown-hover flex ">
+            <label tabIndex={0} className=" btn btn-ghost btn-circle avatar">
+              <div className=" w-10 rounded-full">
+                <img src={user?.photoURL || ""} alt="" />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm items-center dropdown-content z-[1] bg-base-100 rounded-box shadow w-44"
+            >
+              <li>
+                <a className="text-base font-semibold hover:text-rose-600">
+                  {user.displayName || "No User"}
+                </a>
+              </li>
+              <li>
+                <Link
+                  to="/login"
+                  onClick={logout}
+                  className=" text-base font-semibold hover:bg-rose-500 hover:text-white hover:font-bold"
+                >
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link
+            to="/login"
+            className="btn text-base rounded-full font-semibold bg-rose-400 hover:bg-rose-500 hover:text-white hover:font-bold"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

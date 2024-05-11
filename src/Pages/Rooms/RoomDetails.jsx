@@ -56,7 +56,7 @@ const RoomDetails = () => {
             </p>
           </div>
           <hr className="mb-5 mt-5 border-dotted border-t-4 ml-5 mr-5" />
-          <div className="ml-5">
+          <div className="ml-5 mr-5">
             <h2 className="text-[34px] marcellus">Overview</h2>
             <p className="urbanist-pop text-[#6b6a71] text-[22px]">
               {description}
