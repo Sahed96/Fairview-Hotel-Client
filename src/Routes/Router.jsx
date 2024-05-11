@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layouts/Root";
 import Home from "../Pages/Home/Home";
 import Rooms from "../Pages/Rooms/Rooms";
+import RoomDetails from "../Pages/Rooms/RoomDetails";
 
 const router = createBrowserRouter([
   {
@@ -16,13 +17,12 @@ const router = createBrowserRouter([
         path: "/rooms",
         element: <Rooms />,
       },
-      // {
-      //     path: '/details/:id',
-      //     element: <PrivateRoute>
-      //       <CardDetails />
-      //     </PrivateRoute>,
-      //     loader: ()=> fetch('/card.json')
-      // },
+      {
+        path: "/roomDetails/:id",
+        element: <RoomDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allRooms/${params.id}`),
+      },
       // {
       //     path: '/login',
       //     element: <Login></Login>
