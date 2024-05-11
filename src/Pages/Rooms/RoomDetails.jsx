@@ -1,6 +1,7 @@
 import { BiArea } from "react-icons/bi";
 import { IoIosPeople } from "react-icons/io";
 import { useLoaderData } from "react-router-dom";
+import Booking from "../../Components/Booking/Booking";
 
 const RoomDetails = () => {
   const rooms = useLoaderData();
@@ -63,7 +64,9 @@ const RoomDetails = () => {
             </p>
           </div>
         </div>
-        <div className="col-span-1 bg-amber-50"> col 2</div>
+        <div className="col-span-1">
+          <Booking />
+        </div>
       </div>
     </div>
   );

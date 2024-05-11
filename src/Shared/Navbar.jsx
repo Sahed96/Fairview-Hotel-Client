@@ -13,7 +13,7 @@ const Navbar = () => {
         <Link to="/rooms">Rooms</Link>
       </li>
       <li>
-        <Link to="bookings">My Bookings</Link>
+        <Link to="/bookings">My Bookings</Link>
       </li>
     </>
   );
@@ -56,16 +56,22 @@ const Navbar = () => {
           <div className=" dropdown dropdown-bottom dropdown-end dropdown-hover flex ">
             <label tabIndex={0} className=" btn btn-ghost btn-circle avatar">
               <div className=" w-10 rounded-full">
-                <img src={user?.photoURL || ""} alt="" />
+                <img
+                  src={user?.photoURL || "https://i.ibb.co/hXqMFH8/noimg.png"}
+                  alt=""
+                />
               </div>
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm items-center dropdown-content z-[1] bg-base-100 rounded-box shadow w-44"
+              className="menu menu-sm w-auto items-center dropdown-content z-[1] bg-base-100 rounded-box shadow"
             >
               <li>
+                <a className="text-base justify-center font-semibold hover:text-rose-600">
+                  {user?.displayName || "N/A"}
+                </a>
                 <a className="text-base font-semibold hover:text-rose-600">
-                  {user.displayName || "No User"}
+                  {user?.email || "n/a"}
                 </a>
               </li>
               <li>
