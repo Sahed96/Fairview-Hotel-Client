@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
+
 import useAuth from "../../AuthProvider/useAuth";
+import Swal from "sweetalert2";
 
 const Booking = ({ bookData }) => {
-  const { title, price, _id } = bookData;
+  const { title, price, _id, img } = bookData;
 
   const handleBooking = (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const Booking = ({ bookData }) => {
     const order = {
       customerName: name,
       email,
+      img,
       book_title: title,
       price: price,
       dateFrom: date1,
@@ -22,6 +25,23 @@ const Booking = ({ bookData }) => {
       bookingId: _id,
     };
     console.log(order);
+
+    fetch("http://localhost:5000/bookedRoom", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: `Your Booking is successful. !please give a review on our booking service here ${"/myBooking"} `,
+            icon: "success",
+          });
+        }
+      });
   };
 
   const { user } = useAuth();
@@ -42,7 +62,7 @@ const Booking = ({ bookData }) => {
               type="name"
               name="name"
               placeholder="name"
-              value={user?.displayName}
+              defaultValue={user?.displayName}
               className="input input-bordered w-full max-w-xs"
             />
           </label>
@@ -55,7 +75,7 @@ const Booking = ({ bookData }) => {
             <input
               type="email"
               name="email"
-              value={user?.email}
+              defaultValue={user?.email}
               placeholder="email"
               className="input input-bordered w-full max-w-xs"
             />
@@ -70,6 +90,7 @@ const Booking = ({ bookData }) => {
             </div>
             <input
               type="date"
+              required={true}
               name="date1"
               placeholder=""
               className="input input-bordered w-full max-w-xs"
@@ -83,30 +104,31 @@ const Booking = ({ bookData }) => {
             </div>
             <input
               type="date"
+              required={true}
               name="date2"
               placeholder=""
               className="input input-bordered w-full max-w-xs"
             />
           </label>
           <div className=" mt-16">
-            <label className="form-control pt-5 justify-center mx-auto max-w-xs">
+            <label className="form-control pt-5 justify-center mx-auto max-w-[100px]">
               <div className="label">
-                <span className="label-text text-[#6b6a71] urbanist-pop text-base">
-                  Price
+                <span className="label-text  mx-auto text-[1.3rem] text-[#6b6a71] urbanist-pop text-base">
+                  Total
                 </span>
               </div>
               <input
                 type="price"
                 name="price"
-                value={price}
+                defaultValue={"$" + price}
                 placeholder=""
-                className="input w-24"
+                className="input text-[26px] outline-none border-none border-0 text-center text-[#e85f4c] w-32"
               />
             </label>
             <input
               type="submit"
               value="Book Now"
-              className="bg-[#e85f4c] btn mt-4 ml-24 marcellus justify-center mx-auto text-center w-auto px-16  text-white text-[24px]"
+              className="bg-[#e85f4c] btn px-20 py-2 mt-4 ml-20 marcellus justify-center mx-auto text-center w-auto text-white text-[24px]"
             />
           </div>
         </div>
