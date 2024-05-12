@@ -1,17 +1,42 @@
+/* eslint-disable react/prop-types */
 import useAuth from "../../AuthProvider/useAuth";
 
-const Booking = () => {
+const Booking = ({ bookData }) => {
+  const { title, price, _id } = bookData;
+
+  const handleBooking = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = user?.email;
+    const price = form.price.value;
+    const date1 = form.date1.value;
+    const date2 = form.date2.value;
+    const order = {
+      customerName: name,
+      email,
+      book_title: title,
+      price: price,
+      dateFrom: date1,
+      dateTo: date2,
+      bookingId: _id,
+    };
+    console.log(order);
+  };
+
   const { user } = useAuth();
   return (
-    <form>
-      <div>
-        <div className="bg-[#e85f4c] h-20 mt-4 p-4">
-          <h2 className="marcellus text-white text-[35px] ml-8">Book Room</h2>
-        </div>
+    <div>
+      <div className="bg-[#e85f4c] h-20 mt-4 p-4">
+        <h2 className="marcellus text-white text-[35px] ml-8">Book Room</h2>
+      </div>
+      <form onSubmit={handleBooking}>
         <div className="grid bg-[#faf5ef] p-2 gap-2 grid-cols-3">
           <label className="form-control col-span-1 pt-5 justify-center mx-auto w-full max-w-xs">
             <div className="label">
-              <span className="label-text">Name</span>
+              <span className="label-text text-[#6b6a71] urbanist-pop text-base">
+                Name
+              </span>
             </div>
             <input
               type="name"
@@ -23,7 +48,9 @@ const Booking = () => {
           </label>
           <label className="form-control col-span-2 pt-5 justify-center mx-auto w-full max-w-xs">
             <div className="label">
-              <span className="label-text">Email</span>
+              <span className="label-text text-base text-[#6b6a71] urbanist-pop">
+                Email
+              </span>
             </div>
             <input
               type="email"
@@ -37,34 +64,54 @@ const Booking = () => {
         <div className="bg-[#faf5ef] h-[500px]">
           <label className="form-control pt-5 justify-center mx-auto w-full max-w-xs">
             <div className="label">
-              <span className="label-text">From</span>
+              <span className="label-text text-base text-[#6b6a71] urbanist-pop">
+                From
+              </span>
             </div>
             <input
               type="date"
-              name="date"
+              name="date1"
               placeholder=""
               className="input input-bordered w-full max-w-xs"
             />
           </label>
           <label className="form-control pt-5 justify-center mx-auto w-full max-w-xs">
             <div className="label">
-              <span className="label-text">To</span>
+              <span className="label-text text-[#6b6a71] urbanist-pop text-base">
+                To
+              </span>
             </div>
             <input
               type="date"
-              name="date"
+              name="date2"
               placeholder=""
               className="input input-bordered w-full max-w-xs"
             />
           </label>
-          <input
-            type="submit"
-            value="Book Now"
-            className="bg-[#e85f4c] mt-16 ml-24 marcellus justify-center mx-auto text-center w-auto px-16 py-5 text-white text-[24px]"
-          />
+          <div className=" mt-16">
+            <label className="form-control pt-5 justify-center mx-auto max-w-xs">
+              <div className="label">
+                <span className="label-text text-[#6b6a71] urbanist-pop text-base">
+                  Price
+                </span>
+              </div>
+              <input
+                type="price"
+                name="price"
+                value={price}
+                placeholder=""
+                className="input w-24"
+              />
+            </label>
+            <input
+              type="submit"
+              value="Book Now"
+              className="bg-[#e85f4c] btn mt-4 ml-24 marcellus justify-center mx-auto text-center w-auto px-16  text-white text-[24px]"
+            />
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

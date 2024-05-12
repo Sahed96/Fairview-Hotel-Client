@@ -65,7 +65,7 @@ const RoomDetails = () => {
           </div>
         </div>
         <div className="col-span-1">
-          <Booking />
+          <Booking bookData={rooms} />
         </div>
       </div>
     </div>
