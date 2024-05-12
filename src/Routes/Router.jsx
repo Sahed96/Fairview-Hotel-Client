@@ -8,6 +8,7 @@ import Register from "../Pages/RegisterPage/Register";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import MyBookings from "../Pages/MyBookings/MyBookings";
 import PrivateRoute from "./Private/PrivateRoute";
+import DateChange from "../Pages/DateChange/DateChange";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,12 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/updateDate/:id",
+        element: <DateChange />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/bookedRoom/${params.id}`),
       },
       {
         path: "/myBookings",

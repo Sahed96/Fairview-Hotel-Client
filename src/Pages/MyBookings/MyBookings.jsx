@@ -5,6 +5,7 @@ import { GiCancel } from "react-icons/gi";
 import { FiEdit } from "react-icons/fi";
 import { BiSolidCommentAdd } from "react-icons/bi";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -18,7 +19,9 @@ const MyBookings = () => {
     });
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = (id, dateFrom) => {
+    const newDate = new Date();
+    console.log(newDate);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -94,9 +97,11 @@ const MyBookings = () => {
                     <td className="font-semibold text-lg">{dateFrom}</td>
                     <td className="font-semibold text-lg">{dateTo}</td>
                     <th className="items-center gap-4">
-                      <button className="text-[27px] text-[#6b6a71] ml-4">
-                        <FiEdit />
-                      </button>
+                      <Link to={`/updateDate/${_id}`}>
+                        <button className="text-[27px] text-[#6b6a71] ml-4">
+                          <FiEdit />
+                        </button>
+                      </Link>
                     </th>
                     <th className="items-center gap-4">
                       <button className="text-[30px] text-[#6b6a71] ml-4">
@@ -105,7 +110,7 @@ const MyBookings = () => {
                     </th>
                     <th className="items-center gap-4">
                       <button
-                        onClick={() => handleDelete(_id)}
+                        onClick={() => handleDelete(_id, dateFrom)}
                         className=" text-[30px] text-red-600"
                       >
                         <GiCancel />
