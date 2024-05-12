@@ -37,7 +37,7 @@ const Booking = ({ bookData }) => {
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
-            text: `Your Booking is successful. !please give a review on our booking service here ${"/myBooking"} `,
+            text: `Your Booking is successful. !please give a review on our booking service Go to My Bookings page!`,
             icon: "success",
           });
         }
