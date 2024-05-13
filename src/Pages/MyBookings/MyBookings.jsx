@@ -21,6 +21,7 @@ const MyBookings = () => {
 
   const handleDelete = (id, dateFrom) => {
     const newDate = new Date();
+    console.log(dateFrom);
     console.log(newDate);
     Swal.fire({
       title: "Are you sure?",
@@ -104,9 +105,11 @@ const MyBookings = () => {
                       </Link>
                     </th>
                     <th className="items-center gap-4">
-                      <button className="text-[30px] text-[#6b6a71] ml-4">
-                        <BiSolidCommentAdd />
-                      </button>
+                      <Link to={`/reviews/${_id}`}>
+                        <button className="text-[30px] text-[#6b6a71] ml-4">
+                          <BiSolidCommentAdd />
+                        </button>
+                      </Link>
                     </th>
                     <th className="items-center gap-4">
                       <button

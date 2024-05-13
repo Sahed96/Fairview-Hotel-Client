@@ -1,32 +1,24 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Star from "../../Components/Star";
+import Star from "../../../Components/Star";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const Rooms = () => {
-  // const { title } = rooms;
-  const [rooms, setRooms] = useState([]);
-  const url = "http://localhost:5000/allRooms";
+const Featured = () => {
+  // const featureData = useLoaderData();
+  // const { title } = featureData;
+  // console.log(title);
+  const [featuredRooms, setFeaturedRooms] = useState([]);
+  const url = `http://localhost:5000/specialRoom`;
   useEffect(() => {
     axios.get(url).then((res) => {
-      setRooms(res.data);
+      setFeaturedRooms(res.data);
     });
-  }, [rooms]);
+  }, [setFeaturedRooms]);
   return (
     <div className="container grid lg:grid-cols-3 grid-cols-1">
       <div className="lg:col-span-3 col-span-1 mb-6">
-        <div className="px-5 flex justify-between">
-          <p>{rooms.length} Rooms</p>
-          <div className="border-2">
-            <select className="px-4 py-3" name="" id="">
-              <option value="">Price</option>
-              <option value="low">Low</option>
-              <option value="high">High</option>
-            </select>
-          </div>
-        </div>
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-5 mt-5 ml-5">
-          {rooms.map((room, idx) => {
+          {featuredRooms.map((room, idx) => {
             const {
               _id,
               title,
@@ -63,7 +55,7 @@ const Rooms = () => {
                     )}
                   </figure>
                   <div className="card-body">
-                    <div className="">
+                    <div>
                       <Star stars={rating} />
                     </div>
                     <h2 className="card-title mt-3 text-[26px] marcellus ">
@@ -100,4 +92,4 @@ const Rooms = () => {
   );
 };
 
-export default Rooms;
+export default Featured;

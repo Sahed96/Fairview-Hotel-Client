@@ -9,6 +9,8 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import MyBookings from "../Pages/MyBookings/MyBookings";
 import PrivateRoute from "./Private/PrivateRoute";
 import DateChange from "../Pages/DateChange/DateChange";
+import Review from "../Pages/Review/Review";
+import Featured from "../Pages/Home/Featured/Featured";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,18 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/featured",
+        element: <Featured />,
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/allRooms/${params.status}`),
+      },
+      {
+        path: "/reviews/:id",
+        element: <Review />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/bookedRoom/${params.id}`),
       },
       {
         path: "/updateDate/:id",

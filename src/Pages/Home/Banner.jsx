@@ -10,8 +10,9 @@ const Banner = () => {
         height="750px"
         width="1280px"
       />
-      <div className=" absolute mx-auto top-[300px] left-[350px] font-bold shadow-lg text-white text-6xl">
-        welcome to FairView
+      <div className=" absolute mx-auto top-[400px] left-[150px] font-bold text-white text-6xl">
+        <h3 className="text-5xl marcellus">EXPERIENCE OUR</h3>
+        <h1 className="text-9xl mt-3 marcellus">FAIRVIEW HOTEL</h1>
       </div>
     </div>
   );
