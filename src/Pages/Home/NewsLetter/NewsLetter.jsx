@@ -11,12 +11,12 @@ const NewsLetter = () => {
           <h1 className="text-7xl marcellus text-white pt-40 pl-20">
             The Best Hotel on the <br /> Beach Side
           </h1>
-          <div className="pt-6 pl-20">
+          <div className="pt-6 pr-20 text-end ">
             <h2 className="text-4xl text-white marcellus">
               Please Join With Us
             </h2>
             <Link to="/register">
-              <button className="btn mt-5 text-2xl justify-center mx-auto px-4 text-white marcellus  bg-[#e85f4c]">
+              <button className="btn mt-5 mr-12 text-2xl justify-center mx-auto px-4 text-white marcellus  bg-[#e85f4c]">
                 Register Here
               </button>
             </Link>

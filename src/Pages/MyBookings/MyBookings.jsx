@@ -19,7 +19,7 @@ const MyBookings = () => {
     });
   }, []);
 
-  const handleDelete = (id, dateFrom) => {
+  const handleDelete = (id, dateFrom, bookingId) => {
     const newDate = new Date();
     console.log(dateFrom);
     console.log(newDate);
@@ -33,6 +33,11 @@ const MyBookings = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
+        axios
+          .patch(`http://localhost:5000/unavailability/${bookingId}`)
+          .then((res) => {
+            console.log(res.data);
+          });
         fetch(`http://localhost:5000/bookedRoom/${id}`, {
           method: "DELETE",
         })
@@ -76,7 +81,15 @@ const MyBookings = () => {
             <tbody>
               {/* row 1 */}
               {bookings.map((book, idx) => {
-                const { _id, img, book_title, price, dateFrom, dateTo } = book;
+                const {
+                  _id,
+                  img,
+                  bookingId,
+                  book_title,
+                  price,
+                  dateFrom,
+                  dateTo,
+                } = book;
                 return (
                   <tr key={idx}>
                     <td>
@@ -113,7 +126,7 @@ const MyBookings = () => {
                     </th>
                     <th className="items-center gap-4">
                       <button
-                        onClick={() => handleDelete(_id, dateFrom)}
+                        onClick={() => handleDelete(_id, dateFrom, bookingId)}
                         className=" text-[30px] text-red-600"
                       >
                         <GiCancel />

@@ -20,8 +20,8 @@ const Star = ({ stars }) => {
   //   console.log(stars);
   return (
     <div>
-      <div className="icon-style">
-        {ratingStar} <span>{stars}</span>
+      <div className="icon-style text-orange-500 flex items-center">
+        {ratingStar} <span className="ml-2 text-black">{stars}</span>
       </div>
     </div>
   );

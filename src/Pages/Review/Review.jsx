@@ -1,8 +1,9 @@
 import Swal from "sweetalert2";
 import useAuth from "../../AuthProvider/useAuth";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const Review = () => {
+  const navigate = useNavigate();
   const ratings = useLoaderData();
   //   console.log(ratings);
   const { _id } = ratings;
@@ -11,12 +12,13 @@ const Review = () => {
   const handleAddComment = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
 
     const comment = form.comment.value;
     const rating = form.rating.value;
     const ratingId = _id;
 
-    const newReview = { rating, ratingId, comment };
+    const newReview = { rating, name, ratingId, comment, date: new Date() };
     console.log(newReview);
 
     fetch(`http://localhost:5000/review/${_id}`, {
@@ -34,7 +36,7 @@ const Review = () => {
             text: "Added Successfully",
             icon: "success",
             confirmButtonText: "OK",
-          });
+          }).then(navigate(`/rooms`));
       });
   };
 

@@ -15,9 +15,6 @@ const Navbar = () => {
       <li>
         <Link to="/myBookings">My Bookings</Link>
       </li>
-      <li>
-        <Link to="/featured">featured</Link>
-      </li>
     </>
   );
   return (

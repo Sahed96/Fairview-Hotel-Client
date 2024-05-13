@@ -4,7 +4,7 @@ const Banner = () => {
     <div className="container relative mx-auto items-center justify-center">
       <ReactPlayer
         url="https://vimeo.com/944561959"
-        playing={false}
+        playing={true}
         muted={true}
         loop={true}
         height="750px"

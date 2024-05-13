@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 
+import axios from "axios";
 import useAuth from "../../AuthProvider/useAuth";
 import Swal from "sweetalert2";
 
 const Booking = ({ bookData }) => {
-  const { title, price, _id, img } = bookData;
+  const { title, price, availability, _id, img } = bookData;
 
   const handleBooking = (e) => {
     e.preventDefault();
@@ -42,6 +43,9 @@ const Booking = ({ bookData }) => {
           });
         }
       });
+    axios.patch(`http://localhost:5000/availability/${_id}`).then((res) => {
+      console.log(res.data);
+    });
   };
 
   const { user } = useAuth();
@@ -126,6 +130,7 @@ const Booking = ({ bookData }) => {
               />
             </label>
             <input
+              disabled={availability === "unavailable" ? true : false}
               type="submit"
               value="Book Now"
               className="bg-[#e85f4c] btn px-20 py-2 mt-4 ml-20 marcellus justify-center mx-auto text-center w-auto text-white text-[24px]"

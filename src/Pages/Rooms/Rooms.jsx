@@ -31,6 +31,7 @@ const Rooms = () => {
               _id,
               title,
               img,
+              availability,
               rating,
               status,
               offer,
@@ -63,8 +64,21 @@ const Rooms = () => {
                     )}
                   </figure>
                   <div className="card-body">
-                    <div className="">
-                      <Star stars={rating} />
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <Star stars={rating} />
+                      </div>
+                      <div>
+                        {availability === "available" ? (
+                          <p className="urbanist-pop bg-cyan-500 p-2 text-white text-[20px]">
+                            {availability}
+                          </p>
+                        ) : (
+                          <p className="urbanist-pop bg-red-500 p-2 text-white text-[20px]">
+                            {availability}
+                          </p>
+                        )}
+                      </div>
                     </div>
                     <h2 className="card-title mt-3 text-[26px] marcellus ">
                       {title}
