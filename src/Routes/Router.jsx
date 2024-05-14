@@ -11,6 +11,7 @@ import PrivateRoute from "./Private/PrivateRoute";
 import DateChange from "../Pages/DateChange/DateChange";
 import Review from "../Pages/Review/Review";
 import Featured from "../Pages/Home/Featured/Featured";
+import ReviewCard from "../Pages/Review/ReviewCard";
 
 const router = createBrowserRouter([
   {
@@ -43,8 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/featured",
         element: <Featured />,
-        // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/allRooms/${params.status}`),
+      },
+      {
+        path: "/reviewCard",
+        element: <ReviewCard />,
       },
       {
         path: "/reviews/:id",

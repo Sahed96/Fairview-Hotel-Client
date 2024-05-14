@@ -12,9 +12,13 @@ const Navbar = () => {
       <li>
         <Link to="/rooms">Rooms</Link>
       </li>
-      <li>
-        <Link to="/myBookings">My Bookings</Link>
-      </li>
+      {user?.email ? (
+        <li>
+          <Link to="/myBookings">My Bookings</Link>
+        </li>
+      ) : (
+        ""
+      )}
     </>
   );
   return (

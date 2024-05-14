@@ -1,3 +1,4 @@
+import ReviewCard from "../Review/ReviewCard";
 import Banner from "./Banner";
 import Featured from "./Featured/Featured";
 import Map from "./Map";
@@ -10,6 +11,7 @@ const Home = () => {
       <Map />
       <NewsLetter />
       <Featured />
+      <ReviewCard />
     </div>
   );
 };
