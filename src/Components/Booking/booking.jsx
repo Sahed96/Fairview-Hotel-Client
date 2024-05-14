@@ -26,7 +26,7 @@ const Booking = ({ bookData }) => {
       bookingId: _id,
     };
 
-    fetch("https://fairview-hotel-server.vercel.app/bookedRoom", {
+    fetch("http://localhost:5000/bookedRoom", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(order),
@@ -42,11 +42,9 @@ const Booking = ({ bookData }) => {
           });
         }
       });
-    axios
-      .patch(`https://fairview-hotel-server.vercel.app/availability/${_id}`)
-      .then((res) => {
-        console.log(res.data);
-      });
+    axios.patch(`http://localhost:5000/availability/${_id}`).then((res) => {
+      console.log(res.data);
+    });
   };
 
   const { user } = useAuth();

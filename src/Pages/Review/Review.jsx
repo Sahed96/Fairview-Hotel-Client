@@ -20,7 +20,7 @@ const Review = () => {
 
     const newReview = { rating, name, ratingId, comment, date: new Date() };
 
-    fetch(`https://fairview-hotel-server.vercel.app/review/${_id}`, {
+    fetch(`http://localhost:5000/review/${_id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

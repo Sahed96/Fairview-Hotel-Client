@@ -4,7 +4,7 @@ import ReviewStar from "./ReviewStar";
 
 const ReviewCard = () => {
   const [reviews, setReviews] = useState([]);
-  const url = "https://fairview-hotel-server.vercel.app/allReview";
+  const url = "http://localhost:5000/allReview";
   useEffect(() => {
     axios.get(url).then((res) => {
       setReviews(res.data);
@@ -44,7 +44,7 @@ const ReviewCard = () => {
                         <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
                         <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
                       </svg>
-                      {comment}
+                      <div>{comment}</div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"

@@ -11,7 +11,7 @@ const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
 
   const { user } = useAuth();
-  const url = `https://fairview-hotel-server.vercel.app/bookedRoom?email=${user.email}`;
+  const url = `http://localhost:5000/bookedRoom?email=${user.email}`;
 
   useEffect(() => {
     axios.get(url).then((res) => {
@@ -20,9 +20,6 @@ const MyBookings = () => {
   }, []);
 
   const handleDelete = (id, bookingId) => {
-    const newDate = new Date();
-    // console.log(dateFrom);
-    console.log(newDate);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -34,13 +31,11 @@ const MyBookings = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .patch(
-            `https://fairview-hotel-server.vercel.app/unavailability/${bookingId}`
-          )
+          .patch(`http://localhost:5000/unavailability/${bookingId}`)
           .then((res) => {
             console.log(res.data);
           });
-        fetch(`https://fairview-hotel-server.vercel.app/bookedRoom/${id}`, {
+        fetch(`http://localhost:5000/bookedRoom/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -128,7 +123,7 @@ const MyBookings = () => {
                     </th>
                     <th className="items-center gap-4">
                       <button
-                        onClick={() => handleDelete(_id, dateFrom, bookingId)}
+                        onClick={() => handleDelete(_id, bookingId)}
                         className=" text-[30px] text-red-600"
                       >
                         <GiCancel />
