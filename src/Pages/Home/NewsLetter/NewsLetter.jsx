@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 const NewsLetter = () => {
   return (
     <div>
-      <h1 className="text-center text-4xl marcellus text-[#6b6a71] mt-8 mb-6">
-        WELCOME TO HOTEL
+      <h1 className="text-center text-5xl marcellus mt-12 mb-10">
+        WELCOME TO FAIRVIEW
       </h1>
       <div className="image bg-no-repeat rounded-xl bg-center bg-cover max-w-3xl lg:max-w-7xl min-h-[550px] bg-[url(https://i.ibb.co/yQFQDH6/istockphoto-1457724042-2048x2048-transformed.jpg)] ">
-        <div className=" relative min-h-[550px] rounded-xl bg-black/40">
+        <div className=" relative min-h-[550px] rounded-xl bg-black/30">
           <h1 className="text-7xl marcellus text-white pt-40 pl-20">
             The Best Hotel on the <br /> Beach Side
           </h1>

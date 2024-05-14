@@ -4,7 +4,7 @@ import ReviewStar from "./ReviewStar";
 
 const ReviewCard = () => {
   const [reviews, setReviews] = useState([]);
-  const url = "http://localhost:5000/allReview";
+  const url = "https://fairview-hotel-server.vercel.app/allReview";
   useEffect(() => {
     axios.get(url).then((res) => {
       setReviews(res.data);
@@ -24,7 +24,7 @@ const ReviewCard = () => {
       <div className="grid grid-cols-3 gap-2">
         {review6.map((review, ixd) => {
           const { name, date, comment, rating } = review;
-          console.log(date);
+
           return (
             <section key={ixd} className="my-2 text-gray-800">
               <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
@@ -61,7 +61,7 @@ const ReviewCard = () => {
                     <img
                       src="https://i.ibb.co/myWZxcH/image-03.png"
                       alt=""
-                      className="w-28 h-28 -mt-16 bg-center bg-cover rounded-full"
+                      className="w-28 h-28 -mt-20 bg-center bg-cover rounded-full"
                     />
 
                     <p className="text-xl font-semibold marcellus leading-tight">

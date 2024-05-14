@@ -17,7 +17,7 @@ const ReviewStar = ({ review }) => {
       </a>
     );
   });
-  //   console.log(stars);
+
   return (
     <div>
       <div className="icon-style justify-center text-[#e85f4c] text-2xl flex items-center">

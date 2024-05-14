@@ -7,7 +7,7 @@ const Review = () => {
   const ratings = useLoaderData();
   //   console.log(ratings);
   const { _id } = ratings;
-  console.log(_id);
+
   const { user } = useAuth();
   const handleAddComment = (e) => {
     e.preventDefault();
@@ -19,9 +19,8 @@ const Review = () => {
     const ratingId = _id;
 
     const newReview = { rating, name, ratingId, comment, date: new Date() };
-    console.log(newReview);
 
-    fetch(`http://localhost:5000/review/${_id}`, {
+    fetch(`https://fairview-hotel-server.vercel.app/review/${_id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -77,7 +76,7 @@ const Review = () => {
               <input
                 id="username"
                 name="name"
-                defaultValue={user?.displayName}
+                value={user?.displayName}
                 type="text"
                 placeholder="Username"
                 className="w-full p-2 rounded-md border-2  "

@@ -25,13 +25,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/rooms",
-        element: <Rooms />,
+        element: (
+          <PrivateRoute>
+            <Rooms />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/roomDetails/:id",
         element: <RoomDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allRooms/${params.id}`),
+          fetch(
+            `https://fairview-hotel-server.vercel.app/allRooms/${params.id}`
+          ),
       },
       {
         path: "/login",
@@ -53,13 +59,17 @@ const router = createBrowserRouter([
         path: "/reviews/:id",
         element: <Review />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/bookedRoom/${params.id}`),
+          fetch(
+            `https://fairview-hotel-server.vercel.app/bookedRoom/${params.id}`
+          ),
       },
       {
         path: "/updateDate/:id",
         element: <DateChange />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/bookedRoom/${params.id}`),
+          fetch(
+            `https://fairview-hotel-server.vercel.app/bookedRoom/${params.id}`
+          ),
       },
       {
         path: "/myBookings",

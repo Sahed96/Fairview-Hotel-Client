@@ -21,7 +21,7 @@ const DateChange = () => {
     };
     // console.log(order);
 
-    fetch(`http://localhost:5000/update/${_id}`, {
+    fetch(`https://fairview-hotel-server.vercel.app/update/${_id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(order),
