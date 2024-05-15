@@ -22,8 +22,8 @@ const RoomDetails = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3">
-        <div className="col-span-2 ">
+      <div className="grid grid-cols-1 lg:grid-cols-3">
+        <div className="col-span-1 lg:col-span-2 ">
           <div>
             <img className="w-full h-[450px] p-4" src={img} alt="" />
           </div>
