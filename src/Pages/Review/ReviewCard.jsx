@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReviewStar from "./ReviewStar";
+import Timestamp from "react-timestamp";
 
 const ReviewCard = () => {
   const [reviews, setReviews] = useState([]);
-  const url = "http://localhost:5000/allReview";
+  const url = "https://fairview-hotel-server.vercel.app/allReview";
   useEffect(() => {
     axios.get(url).then((res) => {
       setReviews(res.data);
@@ -24,6 +25,7 @@ const ReviewCard = () => {
       <div className="grid grid-cols-3 gap-2">
         {review6.map((review, ixd) => {
           const { name, date, comment, rating } = review;
+          const newDate = new Date(date);
 
           return (
             <section key={ixd} className="my-2 text-gray-800">
@@ -67,7 +69,8 @@ const ReviewCard = () => {
                     <p className="text-xl font-semibold marcellus leading-tight">
                       {name}
                     </p>
-                    <p className="mt-2 text-sm ">{date}</p>
+
+                    <Timestamp date={newDate} />
                   </div>
                 </div>
               </div>

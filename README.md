@@ -1,8 +1,17 @@
-# React + Vite
+# Fairview Hotel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Fairview Hotel website! Below are some key features of our site:
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Booking Rooms:** Easily book rooms online through our intuitive booking system.
+- **User Reviews:** Read reviews from other guests to help you make informed decisions about your stay.
+- **Map Location:** Explore the map to see the location of each room and the hotel amenities.
+- **Gallery:** View stunning images of our rooms, facilities, and surrounding area to get a feel for your stay.
+- **Contact Us:** Reach out to our friendly staff with any inquiries or special requests.
+
+## Live Site
+
+Visit the live site [here](https://fairview-hotel-c14d2.web.app/).
+
+We hope you enjoy your stay at Fairview Hotel!

@@ -1,7 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-// import SocialLogin from "../SocialLogin/SocialLogin";
 import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";

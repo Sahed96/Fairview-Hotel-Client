@@ -6,19 +6,26 @@ import Star from "../../Components/Star";
 const Rooms = () => {
   // const { title } = rooms;
   const [rooms, setRooms] = useState([]);
+
   // const [sort, setSort] = useState("");
-  // const url1 = `http://localhost:5000/allRooms`;
-  const url = "http://localhost:5000/allRooms";
+  const handleSort = (value) => {
+    console.log(value);
+    axios
+      .get(`https://fairview-hotel-server.vercel.app/sortedData?value=${value}`)
+      .then((res) => {
+        setRooms(res.data);
+        console.log(res.data);
+        console.log(rooms);
+      });
+  };
+
+  const url = "https://fairview-hotel-server.vercel.app/allRooms";
   useEffect(() => {
     axios.get(url).then((res) => {
       setRooms(res.data);
     });
-  }, [rooms]);
-  // useEffect(() => {
-  //   axios.get(url).then((res) => {
-  //     setSort(res.data);
-  //   });
-  // }, [setSort]);
+  }, []);
+
   return (
     <div>
       <div className="text-center ">
@@ -33,17 +40,19 @@ const Rooms = () => {
             <p>{rooms.length} Rooms</p>
             <div className="border-2">
               <select
-                // onChange={(e) => {
-                //   setSort(e.target.value);
-                // }}
+                onChange={(e) => {
+                  handleSort(e.target.value);
+                }}
                 // value={sort}
                 className="px-4 py-3"
                 name="sort"
                 id="sort"
               >
-                <option value="">Price</option>
-                <option value="low">Low</option>
-                <option value="high">High</option>
+                <option value="">Price Range</option>
+                <option value="low">
+                  <p>Price(0-500)</p>
+                </option>
+                <option value="high">Price(500-∞)</option>
               </select>
             </div>
           </div>

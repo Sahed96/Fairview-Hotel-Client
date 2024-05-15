@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Featured = () => {
   const [featuredRooms, setFeaturedRooms] = useState([]);
-  const url = "http://localhost:5000/specialRoom";
+  const url = "https://fairview-hotel-server.vercel.app/specialRoom";
   useEffect(() => {
     axios.get(url).then((res) => {
       setFeaturedRooms(res.data);

@@ -6,7 +6,8 @@ const Review = () => {
   const navigate = useNavigate();
   const ratings = useLoaderData();
   //   console.log(ratings);
-  const { _id } = ratings;
+  const { bookingId } = ratings;
+  // console.log(_id,);
 
   const { user } = useAuth();
   const handleAddComment = (e) => {
@@ -16,11 +17,17 @@ const Review = () => {
 
     const comment = form.comment.value;
     const rating = form.rating.value;
-    const ratingId = _id;
+    const ratingId = bookingId;
 
-    const newReview = { rating, name, ratingId, comment, date: new Date() };
+    const newReview = {
+      rating,
+      name,
+      ratingId,
+      comment,
+      date: new Date().getTime(),
+    };
 
-    fetch(`http://localhost:5000/review/${_id}`, {
+    fetch(`https://fairview-hotel-server.vercel.app/review/${ratingId}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

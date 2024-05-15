@@ -1,5 +1,7 @@
+import Lottie from "lottie-react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
+import error from "../../assets/error.json";
 
 const ErrorPage = () => {
   const navigate = useNavigate();
@@ -13,11 +15,7 @@ const ErrorPage = () => {
       <div className="container flex items-center min-h-screen px-6 py-12 mx-auto">
         <div className="flex flex-col items-center max-w-sm mx-auto text-center">
           <div className=" w-[850px]">
-            <img
-              className="w-full"
-              src="https://i.ibb.co/JrPZpJz/404-removebg-preview.png"
-              alt=""
-            />
+            <Lottie animationData={error}></Lottie>
           </div>
           <h1 className=" text-4xl font-semibold text-gray-800  md:text-3xl">
             Something Went Wrong!

@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -52,8 +53,27 @@ const AuthProvider = ({ children }) => {
   // observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
       setUser(currentUser);
       setLoading(false);
+      if (currentUser) {
+        axios
+          .post("https://fairview-hotel-server.vercel.app/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("token response", res.data);
+          });
+      } else {
+        axios
+          .post("https://fairview-hotel-server.vercel.app/logout", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
     return () => {
       unsubscribe();

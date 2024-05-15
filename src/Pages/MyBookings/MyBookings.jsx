@@ -11,13 +11,13 @@ const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
 
   const { user } = useAuth();
-  const url = `http://localhost:5000/bookedRoom?email=${user.email}`;
+  const url = `https://fairview-hotel-server.vercel.app/bookedRoom?email=${user.email}`;
 
   useEffect(() => {
-    axios.get(url).then((res) => {
+    axios.get(url, { withCredentials: true }).then((res) => {
       setBookings(res.data);
     });
-  }, []);
+  }, [url]);
 
   const handleDelete = (id, bookingId) => {
     Swal.fire({
@@ -31,13 +31,19 @@ const MyBookings = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .patch(`http://localhost:5000/unavailability/${bookingId}`)
+          .patch(
+            `https://fairview-hotel-server.vercel.app/unavailability/${bookingId}`
+          )
           .then((res) => {
             console.log(res.data);
           });
-        fetch(`http://localhost:5000/bookedRoom/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://fairview-hotel-server.vercel.app/bookedRoom/${id}`,
+
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);
